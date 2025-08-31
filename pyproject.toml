@@ -1,6 +1,6 @@
 [project]
 name = "pydantic-rng"
-version = "0.1.2"
+version = "0.1.0"
 description = "Generate randomized instances of pydantic classes for testing"
 readme = "README.md"
 authors = [

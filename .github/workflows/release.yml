@@ -13,13 +13,7 @@ jobs:
       # IMPORTANT: this permission is mandatory for Trusted Publishing
       id-token: write
 
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        python-version: ['3.12', '3.13']
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -28,7 +22,8 @@ jobs:
       - name: "Set up Python"
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
+          enable-cache: true
+          python-version-file: "pyproject.toml"
 
       - name: Set up uv
         uses: astral-sh/setup-uv@v6
