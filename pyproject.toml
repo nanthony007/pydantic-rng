@@ -1,7 +1,7 @@
 [project]
 name = "pydantic-rng"
 version = "0.1.1"
-description = "Add your description here"
+description = "Generate randomized instances of pydantic classes for testing"
 readme = "README.md"
 authors = [
     { name = "Nick Anthony", email = "nanthony007@gmail.com" }
