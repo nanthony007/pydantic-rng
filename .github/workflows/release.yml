@@ -33,7 +33,6 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v6
         with:
-          enable-cache: true
           version: "0.8.14"
 
       - name: Sync dependencies
