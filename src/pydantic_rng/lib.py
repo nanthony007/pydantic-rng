@@ -32,6 +32,10 @@ def configure_rng(
     null_chance: float | None = None,
     default_chance: float | None = None,
 ):
+    """Configure global bounds on types.
+
+    NOTE: These modify the globals for all instances generated from the core lib.
+    """
     global \
         NUMERIC_MIN, \
         NUMERIC_MAX, \
@@ -281,6 +285,10 @@ def _gen_value(
 # Generate a full Pydantic model instance
 # -------------------
 def generate(type_: Type[T]) -> T:
+    """Generate a new, randomized instance of this type.
+
+    NOTE: We only support ascii string variants at this time.
+    """
     data = {}
     logger.debug("Generating instance for model %s", type_.__name__)
     for field_name, model_field in type_.model_fields.items():
