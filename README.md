@@ -16,14 +16,14 @@ This tool helps you quickly create mock data for testing, prototyping, and demon
 Install the package (usually as a dev dependency):
 
 ```bash
-uv add --dev pydantic-random-data
+uv add --dev pydantic-rng
 ```
 
 ## Generate Basic Class RNG
 
 ```python
 from pydantic import BaseModel
-from pydantic_random_data import generate
+from pydantic_rng import generate
 
 class User(BaseModel):
     user_id: int
