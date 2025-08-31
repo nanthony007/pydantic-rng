@@ -8,6 +8,11 @@ on:
 
 jobs:
   test_and_build:
+    environment: pypi
+    permissions:
+      # IMPORTANT: this permission is mandatory for Trusted Publishing
+      id-token: write
+
     strategy:
       fail-fast: false
       matrix:
@@ -29,6 +34,7 @@ jobs:
         uses: astral-sh/setup-uv@v6
         with:
           enable-cache: true
+          version: "0.8.14"
 
       - name: Sync dependencies
         run: uv sync --locked
@@ -44,5 +50,3 @@ jobs:
 
       - name: Publish to PyPI
         run: uv publish
-        env:
-          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
