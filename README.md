@@ -34,3 +34,25 @@ class User(BaseModel):
 random_user = generate(User)
 print(random_user.model_dump_json(indent=2))
 ```
+
+
+Or, more usually...
+
+```python
+from typing import Annotated
+
+from tqdm.rich import trange # requires `rich` as well
+from pydantic import BaseModel, Field
+from pydantic_rng import generate
+
+N = 1_000_000
+
+
+class World(BaseModel):
+  radius: Annotated[float, Field(gt=0, lt=360)]
+
+with open("random-data.jsonl", "w") as f:
+  for _ in trange(N):
+    item = generate(World)
+    f.write(item.model_dump_json() + "\n")
+```
