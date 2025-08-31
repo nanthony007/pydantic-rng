@@ -23,7 +23,7 @@ jobs:
       - name: Set up uv and Python
         uses: astral-sh/setup-uv@v6
         with:
-          python-version-file: 'pyproject.toml'
+          version-file: 'pyproject.toml'
           enable-cache: true
 
       - name: Sync dependencies

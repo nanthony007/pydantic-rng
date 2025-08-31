@@ -38,6 +38,7 @@ class CompoundModel(BaseModel):
 class ConstrainedModel(BaseModel):
     f: Annotated[float, Field(ge=0, le=100)]
     s: Annotated[str, Field(max_length=100)]
+    s2: Annotated[str, Field(min_length=10, max_length=10)]
 
 
 def test_all_types():
