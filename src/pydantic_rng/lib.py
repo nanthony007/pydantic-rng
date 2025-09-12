@@ -225,12 +225,12 @@ def _gen_value(
     elif annotation is datetime:
         v1, v2 = _gen_date(field_name=field_name), _gen_time(field_name=field_name)
         return datetime(v1.year, v1.month, v1.day, v2.hour, v2.minute, v2.second)
-    elif origin is Union and type(None) in args:
-        if random.random() < 0.5:
-            return None
+    elif origin is Union:
+        non_none_args = [a for a in args if a is not type(None)]
+        chosen_type = random.choice(non_none_args)
         return _gen_value(
             field_name=field_name,
-            annotation=[a for a in args if a is not type(None)][0],
+            annotation=chosen_type,
             metadata=metadata,
         )
     elif origin is Literal:
