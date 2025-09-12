@@ -1,5 +1,5 @@
 from datetime import date, datetime, time
-from typing import Annotated, Any, List, Literal, Optional, Set, Tuple
+from typing import Annotated, Any, List, Literal, Optional, Set, Tuple, Union
 
 from pydantic import BaseModel
 from pydantic.fields import Field
@@ -26,6 +26,9 @@ class AllTypesModel(BaseModel):
     tup: Tuple[int, str, bytes]
     l_any: List[Any]
     lit: Literal["a", "b", "c"]
+    u: Union[int, str]
+    u2: int | str
+    u3: Annotated[int | str, Field()]
 
 
 class CompoundModel(BaseModel):

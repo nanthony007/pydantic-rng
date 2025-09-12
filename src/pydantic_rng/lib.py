@@ -2,6 +2,7 @@ import logging
 import random
 import string
 from datetime import date, datetime, time
+import types
 from typing import Any, Literal, Type, TypeVar, Union, get_args, get_origin
 
 from annotated_types import Ge, Gt, Le, Lt, MaxLen, MinLen, MultipleOf
@@ -225,7 +226,7 @@ def _gen_value(
     elif annotation is datetime:
         v1, v2 = _gen_date(field_name=field_name), _gen_time(field_name=field_name)
         return datetime(v1.year, v1.month, v1.day, v2.hour, v2.minute, v2.second)
-    elif origin is Union:
+    elif origin in (Union, types.UnionType):
         non_none_args = [a for a in args if a is not type(None)]
         chosen_type = random.choice(non_none_args)
         return _gen_value(
