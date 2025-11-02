@@ -1,4 +1,5 @@
-name: Build and Publish
+
+name: Lint and Test
 
 on:
   push:
@@ -6,7 +7,9 @@ on:
       - main
   pull_request:
     types:
-      - closed
+      - opened      
+      - reopened   
+      - synchronize
 
 jobs:
   test_and_build:
@@ -41,8 +44,3 @@ jobs:
       - name: Run Pytest
         run: uv run pytest
 
-      - name: Build package
-        run: uv build
-
-      - name: Publish to PyPI
-        run: uv publish
