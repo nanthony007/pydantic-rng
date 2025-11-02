@@ -24,43 +24,6 @@ NULL_CHANCE = 0.2
 DEFAULT_CHANCE = 0.6
 
 
-def configure_rng(
-    numeric_min: int | None = None,
-    numeric_max: int | None = None,
-    min_str_length: int | None = None,
-    max_str_length: int | None = None,
-    max_sequence_length: int | None = None,
-    null_chance: float | None = None,
-    default_chance: float | None = None,
-):
-    """Configure global bounds on types.
-
-    NOTE: These modify the globals for all instances generated from the core lib.
-    """
-    global \
-        NUMERIC_MIN, \
-        NUMERIC_MAX, \
-        MIN_STR_LENGTH, \
-        MAX_STR_LENGTH, \
-        MAX_SEQUENCE_LENGTH, \
-        NULL_CHANCE, \
-        DEFAULT_CHANCE
-    if numeric_min is not None:
-        NUMERIC_MIN = numeric_min
-    if numeric_max is not None:
-        NUMERIC_MAX = numeric_max
-    if min_str_length is not None:
-        MIN_STR_LENGTH = min_str_length
-    if max_str_length is not None:
-        MAX_STR_LENGTH = max_str_length
-    if max_sequence_length is not None:
-        MAX_SEQUENCE_LENGTH = max_sequence_length
-    if null_chance is not None:
-        NULL_CHANCE = null_chance
-    if default_chance is not None:
-        DEFAULT_CHANCE = default_chance
-
-
 # -------------------
 # Constants
 # -------------------
@@ -282,6 +245,41 @@ def _gen_value(
         return None
 
 
+def configure_rng(
+    numeric_min: int | None = None,
+    numeric_max: int | None = None,
+    min_str_length: int | None = None,
+    max_str_length: int | None = None,
+    max_sequence_length: int | None = None,
+    null_chance: float | None = None,
+    default_chance: float | None = None,
+):
+    """Configure global bounds on types.
+
+    NOTE: These modify the globals for all instances generated from the core lib.
+    """
+    global \
+        NUMERIC_MIN, \
+        NUMERIC_MAX, \
+        MIN_STR_LENGTH, \
+        MAX_STR_LENGTH, \
+        MAX_SEQUENCE_LENGTH, \
+        NULL_CHANCE, \
+        DEFAULT_CHANCE
+    if numeric_min is not None:
+        NUMERIC_MIN = numeric_min
+    if numeric_max is not None:
+        NUMERIC_MAX = numeric_max
+    if min_str_length is not None:
+        MIN_STR_LENGTH = min_str_length
+    if max_str_length is not None:
+        MAX_STR_LENGTH = max_str_length
+    if max_sequence_length is not None:
+        MAX_SEQUENCE_LENGTH = max_sequence_length
+    if null_chance is not None:
+        NULL_CHANCE = null_chance
+    if default_chance is not None:
+        DEFAULT_CHANCE = default_chance
 # -------------------
 # Generate a full Pydantic model instance
 # -------------------
